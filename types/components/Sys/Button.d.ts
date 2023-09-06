@@ -4,7 +4,10 @@ export interface ButtonProps {
   type?: string
   disabled?: boolean
   block?: boolean
-  outline?: boolean
+  variant?: 'solid' | 'outline' | 'link' | 'ghost'
+  icon?: string
+  trailing?: boolean
+  size: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
   class?: string
 }

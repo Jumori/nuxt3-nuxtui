@@ -70,7 +70,24 @@
             >.
           </SysCheckbox>
 
-          <SysButton type="submit" block class="mt-8">Submit</SysButton>
+          <SysButton
+            type="button"
+            block
+            variant="ghost"
+            icon="i-mdi-trash-can"
+            @click="() => console.log('delete clicked')"
+          />
+          <SysButton
+            type="button"
+            block
+            variant="link"
+            icon="i-mdi-chevron-left"
+            class="mt-8"
+            @click="() => console.log('return clicked')"
+          >
+            Voltar
+          </SysButton>
+          <SysButton type="submit" block>Submit</SysButton>
         </UForm>
       </div>
     </div>
@@ -103,7 +120,7 @@ const schema = object({
     .oneOf([true], 'Campo obrigatório')
 })
 
-async function handleSubmit() {
+const handleSubmit = async () => {
   try {
     await form.value!.validate()
     console.log(JSON.stringify(state.value, null, 2))

@@ -5,12 +5,15 @@
     :type="props.type"
     :disabled="props.disabled"
     :block="props.block"
-    :variant="props.outline ? 'outline' : 'solid'"
+    :variant="props.variant"
+    :icon="props.icon"
+    :trailing="props.trailing"
+    :size="props.size"
     :class="`min-w-[10rem] h-12 flex justify-center ${props.class || ''}`"
     :ui="{
       font: 'font-bold',
     }"
-    size="xl"
+    @click="handleClick"
   >
     <slot></slot>
   </UButton>
@@ -25,7 +28,10 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   type: 'button',
   disabled: false,
   block: false,
-  outline: false
+  variant: 'solid',
+  icon: '',
+  trailing: false,
+  size: 'xl'
 })
 
 const emits = defineEmits<{
