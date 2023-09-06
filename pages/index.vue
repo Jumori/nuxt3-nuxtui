@@ -110,7 +110,7 @@ async function handleSubmit() {
 
     toast.success({
       id: 'index-valid-form',
-      title: 'Dados enviados com sucesso!',
+      title: 'Dados enviados com sucesso!'
     })
   } catch (error) {
     console.error(error)
@@ -118,7 +118,7 @@ async function handleSubmit() {
     toast.error({
       id: 'index-invalid-form',
       title: 'Formulário inválido',
-      description: 'Verifique se preencheu os campos corretamente',
+      description: 'Verifique se preencheu os campos corretamente'
     })
   }
 }

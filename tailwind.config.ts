@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss'
 import { colors } from './tailwind.theme'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 export default <Partial<Config>>{
   content: [
@@ -17,7 +18,7 @@ export default <Partial<Config>>{
       },
 
       fontFamily: {
-        sans: 'Roboto, sans-serif'
+        sans: ['Roboto', 'Nunito', ...defaultTheme.fontFamily.sans]
       }
     }
   }
