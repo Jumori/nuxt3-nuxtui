@@ -1,6 +1,5 @@
 <template>
-  <UFormGroup
-    :id="props.name"
+  <SysFormGroup
     :name="props.name"
     :label="props.label"
     :help="props.help"
@@ -26,7 +25,7 @@
         {{ selectedOptionLabel }}
       </template>
     </USelectMenu>
-  </UFormGroup>
+  </SysFormGroup>
 </template>
 
 <script setup lang="ts">

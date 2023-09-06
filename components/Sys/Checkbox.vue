@@ -1,6 +1,5 @@
 <template>
-  <UFormGroup
-    :id="props.name"
+  <SysFormGroup
     :name="props.name"
     :required="props.required"
     :class="`w-full ${props.class || ''}`"
@@ -12,14 +11,19 @@
       :required="props.required"
       :help="props.help"
       :class="`${props.checkboxClass || ''}`"
-      color="primary"
-      @input="handleInput"
+      :ui="{
+        wrapper: 'relative flex items-center',
+        base: 'h-5 w-5 dark:checked:bg-current dark:checked:border-transparent dark:indeterminate:bg-current dark:indeterminate:border-transparent disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent',
+        label: 'font-medium text-gray-700 dark:text-gray-200 text-base'
+      }"
+      color="main"
+      @change="handleInput"
     >
       <template #label>
         <slot></slot>
       </template>
     </UCheckbox>
-  </UFormGroup>
+  </SysFormGroup>
 </template>
 
 <script setup lang="ts">

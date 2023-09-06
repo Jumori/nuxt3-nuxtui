@@ -55,7 +55,7 @@ export default defineNuxtConfig({
 
   ui: {
     global: true,
-    icons: ['mdi']
+    icons: ['mdi', 'heroicons']
   },
 
   nitro: {

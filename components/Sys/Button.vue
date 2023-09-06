@@ -6,9 +6,11 @@
     :disabled="props.disabled"
     :block="props.block"
     :variant="props.outline ? 'outline' : 'solid'"
-    :class="`min-w-[10rem] h-12 flex justify-center ${
-      props.class || ''
-    }`"
+    :class="`min-w-[10rem] h-12 flex justify-center ${props.class || ''}`"
+    :ui="{
+      font: 'font-bold',
+    }"
+    size="xl"
   >
     <slot></slot>
   </UButton>
@@ -19,11 +21,11 @@ import { ButtonProps } from '@/types/components/Sys/Button'
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   loading: false,
-  color: 'primary',
+  color: 'main',
   type: 'button',
   disabled: false,
   block: false,
-  outline: false,
+  outline: false
 })
 
 const emits = defineEmits<{

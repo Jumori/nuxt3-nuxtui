@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import { colors } from './tailwind.theme'
 
 export default <Partial<Config>>{
   content: [
@@ -12,23 +13,7 @@ export default <Partial<Config>>{
   theme: {
     extend: {
       colors: {
-        transparent: 'transparent',
-
-        black: '#000',
-        white: '#FFF',
-
-        primary: {
-          500: '#00DC82',
-          300: '#06B26C'
-        },
-
-        secondary: {
-          900: '#121214',
-          800: '#202024',
-          400: '#7C7C8A',
-          200: '#C4C4CC',
-          100: '#E1E1E6'
-        }
+        ...colors
       },
 
       fontFamily: {

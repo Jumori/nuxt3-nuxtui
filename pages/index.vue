@@ -1,7 +1,7 @@
 <template>
   <div class="bg-zinc-800 h-screen w-screen">
     <div class="container mx-auto flex flex-col items-center justify-center">
-      <Logo height="160" width="160" :color="appConfig.theme.primary[500]" />
+      <Logo height="160" width="160" :color="appConfig.theme.main.DEFAULT" />
 
       <div class="w-[50%]">
         <UForm
@@ -64,7 +64,7 @@
             <a
               href="/"
               target="_blank"
-              class="text-primary-400 underline hover:text-primary-300 transition-colors"
+              class="text-main underline hover:text-main-500 transition-colors"
             >
               Termos de uso </a
             >.
@@ -97,14 +97,15 @@ const schema = object({
     .min(8, 'Campo deve ter ao menos 8 caracteres')
     .required('Campo obrigatório'),
   gender: string().required('Campo obrigatório'),
-  acceptance: boolean().required('Campo obrigatório').oneOf([true], 'Campo obrigatório')
+  acceptance: boolean()
+    .required('Campo obrigatório')
+    .oneOf([true], 'Campo obrigatório')
 })
 
 async function handleSubmit() {
   try {
     await form.value!.validate()
     console.log(JSON.stringify(state.value, null, 2))
-
   } catch (error) {
     console.error(error)
   }

@@ -1,6 +1,5 @@
 <template>
-  <UFormGroup
-    :id="props.name"
+  <SysFormGroup
     :name="props.name"
     :label="props.label"
     :help="props.help"
@@ -21,7 +20,7 @@
       @input="handleInput"
       @blur="handleBlur"
     />
-  </UFormGroup>
+  </SysFormGroup>
 </template>
 
 <script setup lang="ts">
