@@ -20,7 +20,7 @@
       @change="handleInput"
     >
       <template #label>
-        <slot></slot>
+        <slot @click="handleInput"></slot>
       </template>
     </UCheckbox>
   </SysFormGroup>

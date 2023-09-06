@@ -1,6 +1,6 @@
 <template>
   <UFormGroup
-    :id="props.name"
+    :id="`${props.name}-form-group`"
     :name="props.name"
     :label="props.label"
     :help="props.help"
