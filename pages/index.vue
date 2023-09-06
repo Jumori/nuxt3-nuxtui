@@ -81,6 +81,7 @@
 import { boolean, object, string } from 'yup'
 
 const appConfig = useAppConfig()
+const toast = useNotification()
 
 const form = ref()
 const state = ref({
@@ -106,8 +107,19 @@ async function handleSubmit() {
   try {
     await form.value!.validate()
     console.log(JSON.stringify(state.value, null, 2))
+
+    toast.success({
+      id: 'index-valid-form',
+      title: 'Dados enviados com sucesso!',
+    })
   } catch (error) {
     console.error(error)
+
+    toast.error({
+      id: 'index-invalid-form',
+      title: 'Formulário inválido',
+      description: 'Verifique se preencheu os campos corretamente',
+    })
   }
 }
 </script>
