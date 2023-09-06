@@ -11,6 +11,7 @@ export default defineNuxtConfig({
       title: 'Nuxt 3 + NuxtUI',
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
+      link: [{ rel: 'icon', type: 'image/x-icon', href: './favicon.ico' }]
     }
   },
 
@@ -30,7 +31,7 @@ export default defineNuxtConfig({
       {
         families: {
           Roboto: true,
-          Nunito: [300, 400, 500, 700],
+          Nunito: [300, 400, 500, 700]
         }
       }
     ]

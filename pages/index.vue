@@ -72,11 +72,12 @@
 
           <SysButton
             type="button"
-            block
             variant="ghost"
-            icon="i-mdi-trash-can"
-            @click="() => console.log('delete clicked')"
+            icon="i-mdi-dock-window"
+            class="min-w-min h-min"
+            @click="() => (isModalOpen = !isModalOpen)"
           />
+
           <SysButton
             type="button"
             block
@@ -91,6 +92,40 @@
         </UForm>
       </div>
     </div>
+
+    <SysModal :open="isModalOpen" size="lg" @close="() => (isModalOpen = false)">
+      <template #header>
+        <div class="flex justify-between items-center">
+          <h1 class="text-white text-xl font-bold">Modal Title</h1>
+
+          <SysButton
+            type="button"
+            variant="ghost"
+            icon="i-mdi-close"
+            color="white"
+            class="min-w-min h-min"
+            @click="() => (isModalOpen = false)"
+          />
+        </div>
+      </template>
+
+      <div class="flex justify-center items-center bg-zinc-500 h-40 rounded">
+        Some content here
+      </div>
+
+      <template #footer>
+        <div class="flex justify-center items-center">
+          <SysButton
+            type="button"
+            variant="link"
+            icon="i-mdi-chevron-left"
+            @click="() => (isModalOpen = false)"
+          >
+            Voltar
+          </SysButton>
+        </div>
+      </template>
+    </SysModal>
   </div>
 </template>
 
@@ -108,6 +143,8 @@ const state = ref({
   gender: '',
   acceptance: false
 })
+const isModalOpen = ref(false)
+
 const schema = object({
   cpf: string().cpf().required('Campo obrigatório'),
   email: string().email('E-mail inválido').required('Campo obrigatório'),

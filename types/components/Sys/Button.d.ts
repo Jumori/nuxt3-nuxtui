@@ -7,7 +7,7 @@ export interface ButtonProps {
   variant?: 'solid' | 'outline' | 'link' | 'ghost'
   icon?: string
   trailing?: boolean
-  size: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
   class?: string
 }
