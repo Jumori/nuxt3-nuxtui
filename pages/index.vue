@@ -1,9 +1,31 @@
 <template>
-  <div class="bg-zinc-800 h-screen w-screen">
+  <div
+    :class="`h-screen w-screen ${isDarkTheme ? 'bg-zinc-800' : 'bg-zinc-200'}`"
+  >
     <div class="container mx-auto flex flex-col items-center justify-center">
-      <Logo height="160" width="160" :color="appConfig.theme.main.DEFAULT" />
+      <Logo height="160" width="160" :color="appConfig.theme.main[400]" />
 
       <div class="w-[50%]">
+        <div
+          class="flex justify-center items-center border-[1px] border-main-500 rounded-lg my-10"
+        >
+          <SysButton
+            type="button"
+            variant="ghost"
+            :icon="isDarkTheme ? 'i-mdi-weather-sunny' : 'i-mdi-weather-night'"
+            class="min-w-min h-min"
+            @click="() => (isDarkTheme = !isDarkTheme)"
+          />
+
+          <SysButton
+            type="button"
+            variant="ghost"
+            icon="i-mdi-dock-window"
+            class="min-w-min h-min"
+            @click="() => (isModalOpen = !isModalOpen)"
+          />
+        </div>
+
         <UForm
           ref="form"
           :schema="schema"
@@ -52,6 +74,7 @@
             ]"
             optionLabel="label"
             optionValue="value"
+            searchable
             @update:value="value => (state.gender = value as string)"
           />
 
@@ -64,39 +87,25 @@
             <a
               href="/"
               target="_blank"
-              class="text-main underline hover:text-main-500 transition-colors"
+              class="text-main-400 underline hover:text-main-500 transition-colors"
             >
               Termos de uso </a
             >.
           </SysCheckbox>
 
-          <SysButton
-            type="button"
-            variant="ghost"
-            icon="i-mdi-dock-window"
-            class="min-w-min h-min"
-            @click="() => (isModalOpen = !isModalOpen)"
-          />
-
-          <SysButton
-            type="button"
-            block
-            variant="link"
-            icon="i-mdi-chevron-left"
-            class="mt-8"
-            @click="() => console.log('return clicked')"
-          >
-            Voltar
-          </SysButton>
-          <SysButton type="submit" block>Submit</SysButton>
+          <SysButton type="submit" block class="mt-10">Submit</SysButton>
         </UForm>
       </div>
     </div>
 
-    <SysModal :open="isModalOpen" size="lg" @close="() => (isModalOpen = false)">
+    <SysModal
+      :open="isModalOpen"
+      size="lg"
+      @close="() => (isModalOpen = false)"
+    >
       <template #header>
         <div class="flex justify-between items-center">
-          <h1 class="text-white text-xl font-bold">Modal Title</h1>
+          <h1 :class="`text-xl font-bold`">Modal Title</h1>
 
           <SysButton
             type="button"
@@ -132,6 +141,7 @@
 <script setup lang="ts">
 import { boolean, object, string } from 'yup'
 
+const colorMode = useColorMode()
 const appConfig = useAppConfig()
 const toast = useNotification()
 
@@ -144,6 +154,14 @@ const state = ref({
   acceptance: false
 })
 const isModalOpen = ref(false)
+const isDarkTheme = computed({
+  get() {
+    return colorMode.value === 'dark'
+  },
+  set() {
+    colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
+  }
+})
 
 const schema = object({
   cpf: string().cpf().required('Campo obrigatório'),

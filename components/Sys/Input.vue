@@ -17,6 +17,16 @@
       :class="`h-10 ${props.inputClass || ''}`"
       color="secondary"
       variant="outline"
+      loadingIcon="i-mdi-loading"
+      :ui="{
+        color: {
+          placeholder: 'placeholder-gray-400 dark:placeholder-gray-500',
+          secondary: {
+            outline:
+              'shadow-sm bg-transparent text-black dark:text-white ring-1 ring-inset ring-secondary-200 dark:ring-secondary-400 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400'
+          }
+        }
+      }"
       @input="handleInput"
       @blur="handleBlur"
     />

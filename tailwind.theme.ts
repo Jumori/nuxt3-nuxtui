@@ -8,14 +8,14 @@ export const colors = {
   white: '#FFF',
 
   main: {
-    DEFAULT: '#A50034',
+    400: '#A50034',
     500: '#820034'
   },
 
   secondary: {
     100: '#D9D9D9',
     200: '#B2B2B2',
-    DEFAULT: '#6B6B6B'
+    400: '#6B6B6B'
   },
 
   success: tailwindDefaultColors.green[400],

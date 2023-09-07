@@ -10,6 +10,7 @@
     :trailing="props.trailing"
     :size="props.size"
     :class="`min-w-[10rem] h-12 flex justify-center ${props.class || ''}`"
+    loadingIcon="i-mdi-loading"
     :ui="{
       font: 'font-bold',
     }"
