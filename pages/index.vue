@@ -1,6 +1,8 @@
 <template>
   <div
-    :class="`h-screen w-screen ${isDarkTheme ? 'bg-zinc-800' : 'bg-zinc-200'}`"
+    :class="`min-h-screen w-screen ${
+      isDarkTheme ? 'bg-gray-900' : 'bg-zinc-200'
+    }`"
   >
     <div class="container mx-auto flex flex-col items-center justify-center">
       <Logo height="160" width="160" :color="appConfig.theme.main[400]" />
@@ -23,6 +25,61 @@
             icon="i-mdi-dock-window"
             class="min-w-min h-min"
             @click="() => (isModalOpen = !isModalOpen)"
+          />
+        </div>
+
+        <div class="my-10">
+          <Accordion
+            class="my-6"
+            :items="[
+              {
+                label: `Lista de produtos <span class='text-main-400 font-bold'>(Valor Total: R$200,00)</span>`,
+                closeOthers: false
+              },
+              {
+                label: 'Dados Pessoais',
+                closeOthers: false,
+                dynamicContent: [
+                  {
+                    label: 'Seu dados',
+                    content: [
+                      {
+                        label: 'Nome pessoal',
+                        value: 'John Doe'
+                      },
+                      {
+                        label: 'Data de nascimento',
+                        value: '01/01/1990'
+                      },
+                      {
+                        label: 'Gênero',
+                        value: 'Masculino'
+                      }
+                    ],
+                    redirectEdit: '/dados-pessoais'
+                  },
+                  {
+                    label: 'Endereço',
+                    content: [
+                      {
+                        label: 'CEP',
+                        value: 'xxxxx-xxx'
+                      }
+                    ],
+                    redirectEdit: '/endereco'
+                  }
+                ]
+              },
+              {
+                label: 'Dados Adicionais',
+                content:
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.',
+                closeOthers: false
+              }
+            ]"
+            multiple
+            default-open
+            @edit:section="redirectTo => console.log(redirectTo)"
           />
         </div>
 
